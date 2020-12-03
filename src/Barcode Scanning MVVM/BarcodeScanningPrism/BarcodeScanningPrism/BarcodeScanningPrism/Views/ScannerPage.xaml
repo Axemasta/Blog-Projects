@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             x:Class="BarcodeScanningPrism.Views.ScannerPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Flash" Clicked="Handle_FlashButtonClicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <zxing:ZXingScannerView x:Name="scanView" IsScanning="{Binding IsScanning}" IsAnalyzing="{Binding IsAnalyzing}" Result="{Binding Result, Mode=TwoWay}" ScanResultCommand="{Binding OnBarcodeScannedCommand}"/>
+            <zxing:ZXingDefaultOverlay x:Name="scanOverlay" TopText="Hold your phone up to the barcode" BottomText="Scanning will happen automatically" ShowFlashButton="false" Opacity="0.9"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
